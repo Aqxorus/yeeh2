@@ -12,7 +12,7 @@ export default class Handler implements IHandler {
   }
 
   async LoadEvents() {
-    const files = (await glob(`dist/event/**/*.js`)).map((filePath) =>
+    const files = (await glob(`dist/events/**/*.js`)).map((filePath) =>
       path.resolve(filePath)
     );
 
