@@ -7,4 +7,6 @@ export default interface IConfig {
   mongoUri: string;
   defaultCooldown: number;
   debugMode: number;
+  discordClientId: string;
+  guildId: string;
 }
