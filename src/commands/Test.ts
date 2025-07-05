@@ -16,7 +16,7 @@ export default class test extends Command {
       default_member_permissions:
         PermissionsBitField.Flags.UseApplicationCommands,
       dm_permission: false,
-      cooldown: 3,
+      cooldown: 5,
       dev: false,
       options: [],
     });
