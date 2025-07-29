@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "tsc --build && node dist/index.js",
+    "start:dev": "tsc --build && tsx dist/index.js --development",
     "build": "tsc --build",
     "clean": "del /s /q dist",
     "dev": "nodemon"

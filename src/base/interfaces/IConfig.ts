@@ -6,11 +6,14 @@ export default interface IConfig {
   devToken: string;
   devDiscordClientId: string;
   devGuildId: string;
+  devUserIds: string[];
+
+  mongoUri: string;
+  devMongoUri: string;
 
   apiKey: string;
   heartbeat: string;
   baseURL: string;
-  mongoUri: string;
   defaultCooldown: number;
   debugMode: number;
 }

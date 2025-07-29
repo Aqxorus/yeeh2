@@ -4,6 +4,7 @@ import IConfig from '../interfaces/IConfig';
 import Handler from './Handler';
 import Command from './Command';
 import SubCommand from './SubCommand';
+import { connect } from 'mongoose';
 
 export default class CustomClient extends Client implements ICustomClient {
   handler: Handler;
@@ -37,6 +38,12 @@ export default class CustomClient extends Client implements ICustomClient {
     ).catch((e) => {
       console.error(e);
     });
+
+    connect(
+      this.developmentMode ? this.config.devMongoUri : this.config.mongoUri
+    )
+      .then(() => console.log('Connected to MongoDB.'))
+      .catch((e) => console.error(e));
   }
 
   LoadHandlers(): void {
