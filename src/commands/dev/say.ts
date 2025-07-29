@@ -50,7 +50,7 @@ export default class Say extends Command {
     super(client, data, {
       category: Category.Developer,
       cooldown: 0,
-      dev: true,
+      dev: false,
     });
   }
 
