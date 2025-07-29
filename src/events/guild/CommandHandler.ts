@@ -35,11 +35,11 @@ export default class CommandHandler extends Event {
 
     const { cooldowns } = this.client;
 
-    if (!cooldowns.has(command.name))
-      cooldowns.set(command.name, new Collection());
+    if (!cooldowns.has(command.data.name))
+      cooldowns.set(command.data.name, new Collection());
 
     const now = Date.now();
-    const timestamps = cooldowns.get(command.name);
+    const timestamps = cooldowns.get(command.data.name);
     const cooldownAmount = (command.cooldown || 5) * 1000;
 
     if (

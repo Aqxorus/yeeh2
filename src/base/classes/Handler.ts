@@ -48,16 +48,28 @@ export default class Handler implements IHandler {
         this.client
       );
 
-      if (!command.name)
+      // Handle SubCommands
+      if (file.split('/').pop()?.split('.')[2]) {
+        const subCommand = command as SubCommand;
+        if (!subCommand.name) {
+          return (
+            delete require.cache[require.resolve(file)] &&
+            console.log(`${file.split('/').pop()} does not have a name.`)
+          );
+        }
+        return this.client.subCommands.set(subCommand.name, subCommand);
+      }
+
+      // Handle Commands
+      const regularCommand = command as Command;
+      if (!regularCommand.data.name) {
         return (
           delete require.cache[require.resolve(file)] &&
           console.log(`${file.split('/').pop()} does not have a name.`)
         );
+      }
 
-      if (file.split('/').pop()?.split('.')[2])
-        return this.client.subCommands.set(command.name, command);
-
-      this.client.commands.set(command.name, command as Command);
+      this.client.commands.set(regularCommand.data.name, regularCommand);
 
       return delete require.cache[require.resolve(file)];
     });

@@ -54,14 +54,7 @@ export default class Ready extends Event {
     const data: object[] = [];
 
     commands.forEach((command) => {
-      data.push({
-        name: command.name,
-        description: command.description,
-        options: command.options,
-        default_member_permissions:
-          command.default_member_permissions.toString(),
-        dm_permission: command.dm_permission,
-      });
+      data.push(command.data.toJSON());
     });
 
     return data;
