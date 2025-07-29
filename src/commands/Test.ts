@@ -3,6 +3,7 @@ import {
   MessageFlags,
   PermissionsBitField,
   SlashCommandBuilder,
+  InteractionContextType
 } from 'discord.js';
 import Command from '../base/classes/Command';
 import CustomClient from '../base/classes/CustomClient';
@@ -12,9 +13,9 @@ export default class test extends Command {
   constructor(client: CustomClient) {
     const data = new SlashCommandBuilder()
       .setName('test')
-      .setDescription('my test command')
+      .setDescription('Test command to check if the bot is working')
       .setDefaultMemberPermissions(PermissionsBitField.Flags.UseApplicationCommands)
-      .setDMPermission(false);
+      .setContexts(InteractionContextType.Guild);
 
     super(client, data, {
       category: Category.Utilities,
