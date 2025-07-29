@@ -20,7 +20,7 @@ export default class Ready extends Event {
       : this.client.config.discordClientId;
 
     const rest = new REST().setToken(this.client.config.devToken);
-    // dev
+    // global
     if (!this.client.developmentMode) {
       const globalCommands: any = await rest.put(
         Routes.applicationCommands(clientId),
@@ -35,7 +35,7 @@ export default class Ready extends Event {
         `Successfully loaded ${globalCommands.length} global application (/) commands.`
       );
     }
-    // global
+    // dev
     const devCommands: any = await rest.put(
       Routes.applicationGuildCommands(clientId, this.client.config.devGuildId),
       {
